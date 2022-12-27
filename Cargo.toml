@@ -1,11 +1,11 @@
-[package]
-name = "rust_practice"
-version = "0.1.0"
+[workspace]
+members = ["general/*"]
+
+[workspace.package]
 edition = "2021"
-authors = ["Atri Hegde <atri@hegdeatri.com>"]
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
-[dependencies]
-rustyline = "9.1.0"
-rand = "0.8.1"
+rust-version = "1.66"
+description = "Solutions to problems on sites like leetcode.com"
+authors = ["Atri Hegde <iamatrihegde@outlook.com>"]
+repository = "https://github.com/hegde-atri/rust_practice"
+license = "GPL-v3"
+publish = false

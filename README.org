@@ -1,0 +1,5 @@
+#+TITLE: Rust Practice
+#+AUTHOR: Atri Hegde
+
+This repository contains various problem-solving solutions to questions from the likes of edabit/leetcode, etc...
+but also cool solutions and algorithms I found on the internet all written in rust <3.
