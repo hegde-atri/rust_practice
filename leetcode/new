@@ -1,0 +1,17 @@
+#!/bin/sh
+
+cargo new $1
+
+cat <<EOT > "$1"/src/main.rs
+pub struct Solution;
+
+impl Solution {
+
+}
+
+fn main() {
+}
+
+
+
+EOT

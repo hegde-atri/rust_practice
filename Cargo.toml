@@ -1,5 +1,5 @@
 [workspace]
-members = ["general/*"]
+members = ["general/*", "leetcode/*"]
 
 [workspace.package]
 edition = "2021"
