@@ -53,7 +53,22 @@ impl Solution {
         return Ok(nums.iter().rev().fold(0, |acc, elem| acc * 10 + elem) as i32);
     }
 
-    fn convert_to_node(num: i32) -> Option<Box<ListNode>> {}
+    fn convert_to_node(num: i32) -> Option<Box<ListNode>> {
+        let mut first = ListNode::new(0);
+        let mut cur = &mut first;
+        for x in num
+            .to_string()
+            .chars()
+            .rev()
+            .map(|d| d.to_digit(10).unwrap())
+            .collect::<Vec<_>>()
+            .into_iter()
+        {
+            cur.next = Some(Box::new(ListNode::new(x as i32)));
+            cur = cur.next.as_mut().unwrap();
+        }
+        first.next
+    }
 }
 
 fn main() {}
