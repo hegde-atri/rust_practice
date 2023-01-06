@@ -23,52 +23,79 @@ impl Solution {
         l1: Option<Box<ListNode>>,
         l2: Option<Box<ListNode>>,
     ) -> Option<Box<ListNode>> {
-        let n1 = Self::parse_list(l1.unwrap()).unwrap();
-        let n2 = Self::parse_list(l2.unwrap()).unwrap();
-        let sum = n1 + n2;
-        return Self::convert_to_node(sum);
-    }
-
-    fn parse_list(list: Box<ListNode>) -> Result<i32, String> {
-        let mut next = true;
-        let mut nums = vec![list.val];
-        let mut previous = &list;
-        while next {
-            if let Some(ref node) = previous.next {
-                let current: &Box<ListNode> = node;
-                nums.push(current.val);
-                previous = current;
-            } else {
-                next = false;
-            }
-        }
-        if let Ok(val) = Self::convert_to_num(nums) {
-            return Ok(val);
-        } else {
-            Err(String::from("Could not convert num vec to string"))
-        }
-    }
-
-    fn convert_to_num(nums: Vec<i32>) -> Result<i32, String> {
-        return Ok(nums.iter().rev().fold(0, |acc, elem| acc * 10 + elem) as i32);
-    }
-
-    fn convert_to_node(num: i32) -> Option<Box<ListNode>> {
+        let mut l1 = &l1;
+        let mut l2 = &l2;
+        let mut carry = 0;
         let mut first = ListNode::new(0);
         let mut cur = &mut first;
-        for x in num
-            .to_string()
-            .chars()
-            .rev()
-            .map(|d| d.to_digit(10).unwrap())
-            .collect::<Vec<_>>()
-            .into_iter()
-        {
-            cur.next = Some(Box::new(ListNode::new(x as i32)));
+
+        while l1.is_some() || l2.is_some() || carry != 0 {
+            let mut sum = carry;
+            if let Some(node) = l1 {
+                sum += node.val;
+                l1 = &node.next;
+            }
+            if let Some(node) = l2 {
+                sum += node.val;
+                l2 = &node.next;
+            }
+            carry = sum / 10;
+            cur.next = Some(Box::new(ListNode::new(sum % 10)));
             cur = cur.next.as_mut().unwrap();
         }
         first.next
     }
+    // Solution doesn't work when number exceeds i32 limit
+    // pub fn add_two_numbers(
+    //     l1: Option<Box<ListNode>>,
+    //     l2: Option<Box<ListNode>>,
+    // ) -> Option<Box<ListNode>> {
+    //     let n1 = Self::parse_list(l1.unwrap()).unwrap();
+    //     let n2 = Self::parse_list(l2.unwrap()).unwrap();
+    //     let sum = n1 + n2;
+    //     return Self::convert_to_node(sum);
+    // }
+
+    // fn parse_list(list: Box<ListNode>) -> Result<i32, String> {
+    //     let mut next = true;
+    //     let mut nums = vec![list.val];
+    //     let mut previous = &list;
+    //     while next {
+    //         if let Some(ref node) = previous.next {
+    //             let current: &Box<ListNode> = node;
+    //             nums.push(current.val);
+    //             previous = current;
+    //         } else {
+    //             next = false;
+    //         }
+    //     }
+    //     if let Ok(val) = Self::convert_to_num(nums) {
+    //         return Ok(val);
+    //     } else {
+    //         Err(String::from("Could not convert num vec to string"))
+    //     }
+    // }
+
+    // fn convert_to_num(nums: Vec<i32>) -> Result<i32, String> {
+    //     return Ok(nums.iter().rev().fold(0, |acc, elem| acc * 10 + elem) as i32);
+    // }
+
+    // fn convert_to_node(num: i32) -> Option<Box<ListNode>> {
+    //     let mut first = ListNode::new(0);
+    //     let mut cur = &mut first;
+    //     for x in num
+    //         .to_string()
+    //         .chars()
+    //         .rev()
+    //         .map(|d| d.to_digit(10).unwrap())
+    //         .collect::<Vec<_>>()
+    //         .into_iter()
+    //     {
+    //         cur.next = Some(Box::new(ListNode::new(x as i32)));
+    //         cur = cur.next.as_mut().unwrap();
+    //     }
+    //     first.next
+    // }
 }
 
 fn main() {}
