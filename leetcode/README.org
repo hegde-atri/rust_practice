@@ -1,0 +1,8 @@
+#+title: Leetcode
+#+author: Atri Hegde
+
+Due to my habits of trying to make my code as beautiful/effecient as possible,
+I usually go ahead and scour the internet after solving the problem for insipiration,
+or better solution by other. This usually results in destruction of the original code.
+Therefore I will be making a copy of the original ~main.rs~ file before making further
+enhancements to my solutions.
