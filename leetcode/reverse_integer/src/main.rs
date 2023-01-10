@@ -35,5 +35,12 @@ mod tests {
     use super::*;
 
     #[test]
-    fn case1() {}
+    fn case1() {
+        assert_eq!(123 as i32, Solution::reverse(321));
+    }
+
+    #[test]
+    fn case2() {
+        assert_eq!(-321 as i32, Solution::reverse(-123));
+    }
 }
