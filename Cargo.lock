@@ -28,6 +28,10 @@ name = "container_with_most_water"
 version = "0.1.0"
 
 [[package]]
+name = "generate_parentheses_22"
+version = "0.1.0"
+
+[[package]]
 name = "getrandom"
 version = "0.2.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
