@@ -1,0 +1,3 @@
+#+title: Jug Search
+#+author: Atri Hegde
+#+description: Implementing a search algorithm from COM1005 University of Sheffield 2023
