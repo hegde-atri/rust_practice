@@ -12,7 +12,9 @@ impl Solution {
     }
 }
 
-fn main() {}
+fn main() {
+    println!("{}", Solution::my_pow(2.0, 10000000));
+}
 
 #[cfg(test)]
 mod tests {
